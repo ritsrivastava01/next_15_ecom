@@ -2,9 +2,9 @@ import React from 'react';
 import ProductCard from 'rit/components/ProductCard';
 
 const HomePage: React.FC = async () => {
-  const products = await fetch('https://fakestoreapi.com/products').then(
-    (res) => res.json()
-  );
+  const products = await fetch(
+    'https://fakestoreapi.com/products?limit=5'
+  ).then((res) => res.json());
 
   return (
     <div>
