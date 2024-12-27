@@ -1,4 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+'use client';
+
+import { Heart } from '@phosphor-icons/react';
 
 interface ProductCardProps {
   title: string;
@@ -22,7 +25,19 @@ const ProductCard = ({
 
       <div className='flex flex-auto flex-col justify-between  self-stretch w-full'>
         <p className='text-gray-500 shrink'>{description}</p>
-        <span className='flex items-center py-2'>${price.toFixed(2)}</span>
+        <div className='flex justify-between items-center'>
+          <span className='flex items-center py-2'>${price.toFixed(2)}</span>
+          <div className='flex gap-4 items-center '>
+            <Heart size={32} />
+            <button
+              className='bg-gray-800   hover:bg-gray-600 text-white  py-2 px-4 rounded-lg'
+              onClick={() => {
+                console.log('add');
+              }}>
+              Add to Cart
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

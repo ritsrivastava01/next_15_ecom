@@ -1,10 +1,14 @@
+'use server';
+import { getTranslations } from 'next-intl/server';
 import React from 'react';
 
-const AboutPage: React.FC = () => {
+const AboutPage = async () => {
+  const t = await getTranslations('about');
+
   return (
     <div>
-      <h1>About Us</h1>
-      <p>Welcome to our application. Here is some information about us.</p>
+      <h1>{t('title')}</h1>
+      <p>{t('description')}</p>
     </div>
   );
 };

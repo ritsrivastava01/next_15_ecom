@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import { routing } from 'rit/i18n/routing';
 import { getMessages } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
+import Footer from 'rit/components/Footer';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -45,6 +46,9 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <Header></Header>
           <div className='max-w-7xl mx-auto px-3'>{children}</div>
+          <div className='pt-5'>
+            <Footer></Footer>
+          </div>
         </NextIntlClientProvider>
       </body>
     </html>
