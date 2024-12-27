@@ -1,0 +1,10 @@
+{
+  "home": {
+    "title": "Startpagina",
+    "description": "Welkom op de startpagina"
+  },
+  "about": {
+    "title": "Over Pagina",
+    "description": "Leer meer over ons op deze pagina"
+  }
+}
