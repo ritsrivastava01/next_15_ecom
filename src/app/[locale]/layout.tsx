@@ -7,6 +7,7 @@ import { routing } from 'rit/i18n/routing';
 import { getMessages } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
 import Footer from 'rit/components/Footer';
+import { CartProvider } from 'rit/components/CartProvider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -43,13 +44,15 @@ export default async function RootLayout({
     <html lang={locale}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <NextIntlClientProvider messages={messages}>
-          <Header></Header>
-          <div className='max-w-7xl mx-auto px-3'>{children}</div>
-          <div className='pt-5'>
-            <Footer></Footer>
-          </div>
-        </NextIntlClientProvider>
+        <CartProvider>
+          <NextIntlClientProvider messages={messages}>
+            <Header></Header>
+            <div className='max-w-7xl mx-auto px-3'>{children}</div>
+            <div className='pt-5'>
+              <Footer></Footer>
+            </div>
+          </NextIntlClientProvider>
+        </CartProvider>
       </body>
     </html>
   );
