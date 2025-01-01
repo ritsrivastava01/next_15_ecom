@@ -26,24 +26,22 @@ const CartContext = createContext<CartItemProps | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const addItemToCart = useCallback(
-    (item: CartItem) => {
-      setCartItems((prevItems) => {
-        debugger;
-        const itemIndex = prevItems.findIndex((i) => i.id === item.id);
-        if (itemIndex > -1) {
-          const newItems = [...prevItems];
-          newItems[itemIndex].quantity = newItems[itemIndex].quantity
-            ? newItems[itemIndex].quantity + 1
-            : 1;
-          return newItems;
-        }
 
-        return [...prevItems, item];
-      });
-    },
-    [setCartItems]
-  );
+  const addItemToCart = useCallback((item: CartItem) => {
+    setCartItems((prevCartItems) => {
+      const itemIndex = prevCartItems.findIndex((i) => i.id === item.id);
+
+      if (itemIndex > -1) {
+        // Item exists: Update quantity immutably
+        return prevCartItems.map((i, index) =>
+          index === itemIndex ? { ...i, quantity: (i.quantity ?? 0) + 1 } : i
+        );
+      } else {
+        // Item doesn't exist: Add new item
+        return [...prevCartItems, item];
+      }
+    });
+  }, []);
 
   const contextValue = useMemo(() => {
     return {

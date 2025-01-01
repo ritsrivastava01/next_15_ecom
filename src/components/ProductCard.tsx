@@ -1,9 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { Heart } from '@phosphor-icons/react/dist/ssr';
 import { Button } from './Button';
 import { useCartContext } from './CartProvider';
+import Image from 'next/image';
 
 interface ProductCardProps {
   title: string;
@@ -21,14 +21,16 @@ const ProductCard = ({
   id
 }: ProductCardProps) => {
   const { addItem } = useCartContext();
-  const handleAddToCart = (id: number) =>
+  const handleAddToCart = (id: number) => {
     addItem({ id, title, price, quantity: 1 });
+  };
 
   return (
     <div className='bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-150 p-2 flex flex-col border'>
       <div className='text-lg font-semibold mb-2 line-clamp-1'>{title}</div>
       <div className='flex items-center justify-center [&>img]:h-[240px]'>
-        <img src={image} alt={title}></img>
+        {/* <img src={image} alt={title}></img> */}
+        <Image src={image} alt={title} width={200} height={200}></Image>
       </div>
 
       <div className='flex flex-auto flex-col justify-between self-stretch w-full'>

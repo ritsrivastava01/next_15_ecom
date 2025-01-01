@@ -6,5 +6,15 @@
   "about": {
     "title": "Over Pagina",
     "description": "Leer meer over ons op deze pagina"
+  },
+  "header": {
+    "home": "Startpagina",
+    "about": "Over",
+    "contact": "Contact"
+  },
+  "cart": {
+    "noItem": "Geen items in winkelwagen",
+    "title": "Winkelwagenfout",
+    "description": "Er was een fout met uw winkelwagen"
   }
 }
