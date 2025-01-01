@@ -4,7 +4,7 @@ import ProductCard from 'rit/components/ProductCard';
 
 const HomePage: React.FC = async () => {
   const products = await fetch('https://fakestoreapi.com/products?limit=5', {
-    cache: 'no-cache'
+    cache: 'no-cache',
   }).then((res) => res.json());
 
   const t = await getTranslations('home');
@@ -13,7 +13,7 @@ const HomePage: React.FC = async () => {
     <div>
       <h1>{t('title')}</h1>
       <span>{t('description')}</span>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {products.map((product) => (
           <ProductCard key={product.id} {...product}></ProductCard>
         ))}

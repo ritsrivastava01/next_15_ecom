@@ -13,33 +13,27 @@ interface ProductCardProps {
   id: number;
 }
 
-const ProductCard = ({
-  title,
-  description,
-  price,
-  image,
-  id
-}: ProductCardProps) => {
+const ProductCard = ({ title, description, price, image, id }: ProductCardProps) => {
   const { addItem } = useCartContext();
   const handleAddToCart = (id: number) => {
     addItem({ id, title, price, quantity: 1 });
   };
 
   return (
-    <div className='bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-150 p-2 flex flex-col border'>
-      <div className='text-lg font-semibold mb-2 line-clamp-1'>{title}</div>
-      <div className='flex items-center justify-center [&>img]:h-[240px]'>
+    <div className="flex flex-col overflow-hidden rounded-lg border bg-white p-2 transition-shadow duration-150 hover:shadow-lg">
+      <div className="mb-2 line-clamp-1 text-lg font-semibold">{title}</div>
+      <div className="flex items-center justify-center [&>img]:h-[240px]">
         {/* <img src={image} alt={title}></img> */}
         <Image src={image} alt={title} width={200} height={200}></Image>
       </div>
 
-      <div className='flex flex-auto flex-col justify-between self-stretch w-full'>
-        <p className='text-gray-500 shrink'>{description}</p>
-        <div className='flex justify-between items-center'>
-          <span className='flex items-center py-2'>${price.toFixed(2)}</span>
-          <div className='flex gap-4 items-center '>
+      <div className="flex w-full flex-auto flex-col justify-between self-stretch">
+        <p className="shrink text-gray-500">{description}</p>
+        <div className="flex items-center justify-between">
+          <span className="flex items-center py-2">${price.toFixed(2)}</span>
+          <div className="flex items-center gap-4">
             <Heart size={32} />
-            <Button title='Add to cart' onClick={() => handleAddToCart(id)} />
+            <Button title="Add to cart" onClick={() => handleAddToCart(id)} />
           </div>
         </div>
       </div>
