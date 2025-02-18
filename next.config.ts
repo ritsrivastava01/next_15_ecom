@@ -5,8 +5,7 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  distDir: 'build',
-  output: 'standalone',
+  distDir: 'dist',
   /* config options here */
   images: {
     remotePatterns: [
