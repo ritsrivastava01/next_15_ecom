@@ -1,14 +1,17 @@
+
 name: Build and deploy Next.js app to Azure Web App
 
 on:
   push:
     branches:
-      - main
+      - main  
   workflow_dispatch:
 
 env:
-  APPLICATION_PUBLISH_PROFILE: ${{ secrets.APP_PUBLISH_PROFILE }}
-  WEBAPP_NAME: 'wep-app-next-ecom'
+   AZURE_WEBAPP_NAME: wep-app-next-ecom # set this to your application's name
+#   AZURE_WEBAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
+#   NODE_VERSION: '20.x' # set this to the node version to use
+
 
 jobs:
   build:
@@ -20,7 +23,7 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
+          node-version: "20.x"
 
       - name: npm install, build, and test
         run: |
@@ -29,11 +32,11 @@ jobs:
           mv ./build/static ./build/standalone/build
           mv ./public ./build/standalone
 
-      - name: 'Deploy to Azure Web App'
+      - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: ${{ env.WEBAPP_NAME }}
-          slot-name: 'Production'
-          publish-profile: ${{ env.APPLICATION_PUBLISH_PROFILE }}
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          slot-name: "Production"
+           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ./build/standalone
