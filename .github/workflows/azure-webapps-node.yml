@@ -38,7 +38,7 @@ jobs:
       - name: Copy necessary files to deploy directory
         run: |
           pwd  # Print current working directory
-          cp -r .next deploy/
+          cp -r dist deploy/
           pwd  # Print current working directory again
           ls -la deploy # Check deploy folder content
           cp package.json deploy/
