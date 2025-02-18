@@ -32,6 +32,9 @@ jobs:
           npm run build --if-present
           npm run test --if-present
 
+      - name: Debug - Check if .next exists
+        run: ls -l .next # Check if .next exists
+
       - name: Copy necessary files to deploy directory
         run: |
           cp -r .next deploy/
