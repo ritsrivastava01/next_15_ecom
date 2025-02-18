@@ -1,19 +1,14 @@
 'use client';
-import Link from 'next/link';
-import React from 'react';
-import { ShoppingCart, UserCircle } from '@phosphor-icons/react/dist/ssr';
-import { CartItem, useCartContext } from './CartProvider';
 
-import { usePathname } from 'next/navigation';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from './dropDown';
-import { useTranslations } from 'next-intl';
-import { Trash } from '@phosphor-icons/react';
 import { Button } from './Button';
+import { useCartContext } from './CartProvider';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from './dropDown';
+import { Trash } from '@phosphor-icons/react';
+import { ShoppingCart, UserCircle } from '@phosphor-icons/react/dist/ssr';
+import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import React from 'react';
 
 const Header = () => {
   const { cartItems } = useCartContext();

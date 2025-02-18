@@ -1,5 +1,6 @@
 {
-  "name": "app_next_15",
+  "name": "Azure next Ecom app",
+  "description": "Used to publish app in Azure web app",
   "version": "0.1.0",
   "private": true,
   "scripts": {

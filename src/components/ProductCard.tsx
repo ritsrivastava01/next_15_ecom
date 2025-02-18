@@ -1,11 +1,11 @@
 'use client';
 
-import { Heart } from '@phosphor-icons/react/dist/ssr';
 import { Button } from './Button';
 import { useCartContext } from './CartProvider';
+import { Heart } from '@phosphor-icons/react/dist/ssr';
 import Image from 'next/image';
 
-interface ProductCardProps {
+export interface ProductCardProps {
   title: string;
   description: string;
   price: number;
